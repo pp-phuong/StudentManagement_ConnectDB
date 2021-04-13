@@ -10,10 +10,15 @@ namespace StudentManagement.BLL
     class BLL_QLSV
     {
 
-        public List<SV> GetListSV_BLL()
+        public List<SV> GetListSV_BLL( int ClassID)
         {
             DAL_QLSV Dal = new DAL_QLSV();
-            return Dal.GetListSV_DAL();
+            return Dal.GetListSV_DAL( ClassID);
+        }
+        public List<LSH> GetListLSH_BLL()
+        {
+            DAL_QLSV Dal = new DAL_QLSV();
+            return Dal.GetListLSH_DAL();
         }
         public bool AddSV_BLL(SV s)
         {
@@ -40,9 +45,9 @@ namespace StudentManagement.BLL
                     if (list[i].MSSV > list[j].MSSV)
                     {
                         SV temp = new SV();
-                        temp = l[i];
-                        l[i] = l[j];
-                        l[j] = temp;
+                        temp = list[i];
+                        list[i] = list[j];
+                        list[j] = temp;
                     }
                 }
 

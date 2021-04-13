@@ -5,21 +5,46 @@ using System.Text;
 using System.Threading.Tasks;
 using StudentManagement.DTO;
 using System.Data;
+using System.Windows.Forms;
+
 namespace StudentManagement.DAL
 
 {
     class DAL_QLSV
     {
-        public List<SV> GetListSV_DAL()
+        public List<SV> GetListSV_DAL( int classID)
         {
             List<SV> data = new List<SV>();
             string query = "select * from SV";
+            switch(classID)
+            {
+                case 0:
+                    break;
+                default:
+                    query += " where ClassID = " + classID;
+                    break;
+            } 
+            MessageBox.Show(query);
             foreach (DataRow i in DBHelper.Instance.GetRecords(query).Rows)
             {
                 data.Add(set1SV(i));
             }
             return data;
         }
+        public List<LSH> GetListLSH_DAL()
+        {
+            List<LSH> data = new List<LSH>();
+            string query = "select * from LopSH";
+           
+            foreach( DataRow i in DBHelper.Instance.GetRecords(query).Rows)
+            {
+                data.Add(set1LSH(i));
+            }
+            return data;
+        }
+
+       
+       
         public bool AddSV_DAL(SV s)
         {
             int gender = 1;
