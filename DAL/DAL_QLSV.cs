@@ -53,5 +53,12 @@ namespace StudentManagement.DAL
             l.ClassName = i["ClassName"].ToString();
             return l;
         }
+        public SV getSVbyMSSV(int MSSV)
+        {
+            string query = " select * from SV where MSSV = " + MSSV;
+            SV s = set1SV(DBHelper.Instance.GetRecords(query).Rows[0]);
+            return s;
+        }
+
     }
 }

@@ -164,6 +164,7 @@ namespace StudentManagement.GUI
             this.btn_sort.TabIndex = 9;
             this.btn_sort.Text = "Sort";
             this.btn_sort.UseVisualStyleBackColor = true;
+            this.btn_sort.Click += new System.EventHandler(this.btn_sort_Click);
             // 
             // btn_delete
             // 

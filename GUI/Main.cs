@@ -39,5 +39,11 @@ namespace StudentManagement.GUI
             f2.ShowDialog();
             show();
         }
+
+        private void btn_sort_Click(object sender, EventArgs e)
+        {
+            BLL_QLSV bll = new BLL_QLSV();
+            //datagridview_dssv.DataSource = 
+        }
     }
 }
