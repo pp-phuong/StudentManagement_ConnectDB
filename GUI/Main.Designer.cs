@@ -94,6 +94,7 @@ namespace StudentManagement.GUI
             this.btn_search.TabIndex = 22;
             this.btn_search.Text = "Search";
             this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // txt_search
             // 
@@ -101,6 +102,7 @@ namespace StudentManagement.GUI
             this.txt_search.Name = "txt_search";
             this.txt_search.Size = new System.Drawing.Size(100, 20);
             this.txt_search.TabIndex = 21;
+            this.txt_search.TextChanged += new System.EventHandler(this.txt_search_TextChanged);
             // 
             // cbbLSH
             // 
@@ -174,6 +176,7 @@ namespace StudentManagement.GUI
             this.btn_delete.TabIndex = 8;
             this.btn_delete.Text = "Del";
             this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_edit
             // 
@@ -183,6 +186,7 @@ namespace StudentManagement.GUI
             this.btn_edit.TabIndex = 7;
             this.btn_edit.Text = "Edit";
             this.btn_edit.UseVisualStyleBackColor = true;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
             // btn_add
             // 

@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 
 namespace StudentManagement.DAL
 {
@@ -28,11 +28,12 @@ namespace StudentManagement.DAL
       private SqlConnection _cnn;
         public DBHelper()
         {
-            string cnnstr = @"Data Source=DESKTOP-BIHQC8D;Initial Catalog=QLSV;Integrated Security=True";
+            string cnnstr = @"Data Source=DESKTOP-BIHQC8D;Initial Catalog=QUANLYSINHVIEN;Integrated Security=True";
             _cnn = new SqlConnection(cnnstr);
         }
         public DataTable GetRecords(string query)
         {
+            //MessageBox.Show(query);
             DataTable dt = new DataTable();
             SqlCommand cmd = new SqlCommand(query, _cnn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);

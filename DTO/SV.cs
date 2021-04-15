@@ -8,25 +8,25 @@ namespace StudentManagement.DTO
 {
     public class SV
     {
-        public int MSSV { get; set; }
+        public string MSSV { get; set; }
         public string NameSV { get; set; }
         public Boolean Gender { get; set; }
-        public DateTime Birthday { get; set; }
-        public int ClassID { get; set; }
+        public DateTime NS { get; set; }
+        public int ID_Lop { get; set; }
         public override string ToString()
         {
             return "MSSV:" + MSSV + ", NameSV:" + NameSV;
         }
         public static bool Compare_Name(object o1, object o2)
         {
-            if (String.Compare(((SV)o1).getName(), ((SV)o2).getName()) < 0)
+            if (String.Compare(((SV)o1).getName(), ((SV)o2).getName()) > 0)
                 return true;
             else
                 return false;
         }
         public static bool Compare_MSSV(object o1, object o2)
         {
-            if (((SV)o1).MSSV <= ((SV)o2).MSSV)
+            if (String.Compare(((SV)o1).MSSV, ((SV)o2).MSSV) > 0)
             {
                 return true;
             }
@@ -37,7 +37,7 @@ namespace StudentManagement.DTO
         }
         public static bool Compare_ClassID(object o1, object o2)
         {
-            if (String.Compare(((SV)o1).ClassID.ToString(), ((SV)o2).ClassID.ToString()) <= 0)
+            if (String.Compare(((SV)o1).ID_Lop.ToString(), ((SV)o2).ID_Lop.ToString()) >= 0)
             {
                 return true;
             }
@@ -48,7 +48,7 @@ namespace StudentManagement.DTO
         }
         public static bool Compare_Gender(object o1, object o2)
         {
-            if (String.Compare(((SV)o1).Gender.ToString(), ((SV)o2).Gender.ToString()) >= 0)
+            if (String.Compare(((SV)o1).Gender.ToString(), ((SV)o2).Gender.ToString()) <= 0)
             {
                 return true;
             }
@@ -59,7 +59,7 @@ namespace StudentManagement.DTO
         }
         public static bool Compare_Birth(object o1, object o2)
         {
-            if (String.Compare(((SV)o1).Birthday.ToString(), ((SV)o2).Birthday.ToString()) <= 0)
+            if (String.Compare(((SV)o1).NS.ToString(), ((SV)o2).NS.ToString()) <= 0)
             {
                 return true;
             }

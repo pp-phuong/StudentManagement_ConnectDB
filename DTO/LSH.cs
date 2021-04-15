@@ -8,7 +8,11 @@ namespace StudentManagement.DTO
 {
     class LSH
     {
-        public string ClassName { get; set; }
-        public int ClassID { get; set; }
+        public string NameLop { get; set; }
+        public int ID_Lop { get; set; }
+        public override string ToString()
+        {
+            return NameLop;
+        }
     }
 }

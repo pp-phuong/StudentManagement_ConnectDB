@@ -21,10 +21,9 @@ namespace StudentManagement.DAL
                 case 0:
                     break;
                 default:
-                    query += " where ClassID = " + classID;
+                    query += " where ID_Lop = " + classID;
                     break;
             } 
-            MessageBox.Show(query);
             foreach (DataRow i in DBHelper.Instance.GetRecords(query).Rows)
             {
                 data.Add(set1SV(i));
@@ -43,8 +42,6 @@ namespace StudentManagement.DAL
             return data;
         }
 
-       
-       
         public bool AddSV_DAL(SV s)
         {
             int gender = 1;
@@ -55,35 +52,74 @@ namespace StudentManagement.DAL
             else
             {
                 gender = 0;
-            }    
+            }
             string query = "INSERT INTO SV VALUES('";
-            query += s.MSSV + "', ' " + s.NameSV + "'," + gender + ", '" + s.Birthday + "'," + s.ClassID + ")";
+            query += s.MSSV + "', ' " + s.NameSV + "'," + gender + ", '" + s.NS + "'," + s.ID_Lop + ")";
+            DBHelper.Instance.ExcuteDB(query);
+            return true;
+        }
+
+        public bool UpdateSV_DAL(SV s)
+        {
+            int gender = 1;
+            if (s.Gender == true)
+            {
+                gender = 1;
+            }
+            else
+            {
+                gender = 0;
+            }
+           ;
+            string query = "UPDATE SV SET NS = '";
+            query += s.NS + "', NameSV = '" + s.NameSV + "', Gender = '" + gender + "', ID_Lop = '" + s.ID_Lop + "' WHERE MSSV = " + s.MSSV;
+            DBHelper.Instance.ExcuteDB(query);
+            return true;
+        }
+        
+        public bool  DeleteSV_DAL(String MSSV)
+        {
+            string query = "DELETE FROM SV WHERE MSSV = " +  MSSV;
             DBHelper.Instance.ExcuteDB(query);
             return true;
         }
         private SV set1SV(DataRow i)
         {
             SV s = new SV();
-            s.MSSV = Convert.ToInt32(i["MSSV"].ToString());
+            s.MSSV = i["MSSV"].ToString();
             s.NameSV = i["NameSV"].ToString();
             s.Gender = Convert.ToBoolean(i["Gender"].ToString());
-            s.Birthday = Convert.ToDateTime(i["Birthday"].ToString());
-            s.ClassID = Convert.ToInt32(i["ClassID"].ToString());
+            s.NS = Convert.ToDateTime(i["NS"].ToString());
+            s.ID_Lop = Convert.ToInt32(i["ID_Lop"].ToString());
             return s;
         }
-        private LSH set1LSH(DataRow i)
-        {
-            LSH l = new LSH();
-            l.ClassID = Convert.ToInt32(i["ClassID"].ToString());
-            l.ClassName = i["ClassName"].ToString();
-            return l;
-        }
-        public SV getSVbyMSSV(int MSSV)
+        public SV getSVbyMSSV(string MSSV)
         {
             string query = " select * from SV where MSSV = " + MSSV;
             SV s = set1SV(DBHelper.Instance.GetRecords(query).Rows[0]);
             return s;
         }
+        private LSH set1LSH(DataRow i)
+        {
+            LSH l = new LSH();
+            l.ID_Lop = Convert.ToInt32(i["ID_Lop"].ToString());
+            l.NameLop = i["NameLop"].ToString();
+            return l;
+        }
+       
+        public LSH get1LSH(int ID_Lop)
+        {
+            string query = " select * from SV where LopSH = " + ID_Lop;
+            LSH lopsh = set1LSH(DBHelper.Instance.GetRecords(query).Rows[0]);
+            return lopsh;
+        }
 
+        public string setNextMSSV()
+        {
+            List<SV> ListSV = GetListSV_DAL(0);
+            string LastMSSV = ListSV[ListSV.Count - 1].MSSV;
+            string nextMSSV = (Convert.ToInt32(LastMSSV) + 1).ToString();
+            return nextMSSV;
+        }
     }
 }
