@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -28,8 +29,8 @@ namespace StudentManagement.DAL
       private SqlConnection _cnn;
         public DBHelper()
         {
-            string cnnstr = @"Data Source=DESKTOP-BIHQC8D;Initial Catalog=QUANLYSINHVIEN;Integrated Security=True";
-            _cnn = new SqlConnection(cnnstr);
+            string connectionString = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
+            _cnn = new SqlConnection(connectionString);
         }
         public DataTable GetRecords(string query)
         {
