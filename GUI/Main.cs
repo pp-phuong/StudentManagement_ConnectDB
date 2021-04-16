@@ -77,7 +77,7 @@ namespace StudentManagement.GUI
             GUI.Detail f = new GUI.Detail();
             f.setInfo("-1");
             f.loadData += show;
-            f.ShowDialog();
+            f.Show();
         }
         private void btn_edit_Click(object sender, EventArgs e)
         {
@@ -85,7 +85,7 @@ namespace StudentManagement.GUI
             DataGridViewSelectedRowCollection r = datagridview_dssv.SelectedRows;
             if (r.Count == 0 || r[0].Cells["MSSV"].Value == null)
             {
-                MessageBox.Show("Vui lòng chọn SV để xóa !");
+                MessageBox.Show("Vui lòng chọn SV để chỉnh sửa !");
 
             }
             else
@@ -95,20 +95,28 @@ namespace StudentManagement.GUI
                 GUI.Detail f = new GUI.Detail();
                 f.setInfo(MSSV);
                 f.loadData += show;
-                f.ShowDialog();
+                f.Show();
             }
         }
         private void btn_sort_Click(object sender, EventArgs e)
         {
-            BLL_QLSV bll = new BLL_QLSV();
-            List<string> LMSSV = getListMSSV();
-            string type = cbb_Sort.SelectedItem.ToString();
-            datagridview_dssv.DataSource = bll.SortListSV( bll.GetListSVDTGV(LMSSV), type);
+            if (cbb_Sort.SelectedItem != null)
+            {
+                BLL_QLSV bll = new BLL_QLSV();
+                List<string> LMSSV = getListMSSV();
+                string type = cbb_Sort.SelectedItem.ToString();
+                datagridview_dssv.DataSource = bll.SortListSV(bll.GetListSVDTGV(LMSSV), type);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn kiểu sắp xếp !");
+            }
+            
         }
       
         private void btn_search_Click(object sender, EventArgs e)
         {
-          
+            search();
         }
         private void btn_delete_Click(object sender, EventArgs e)
         {

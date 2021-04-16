@@ -44,7 +44,6 @@ namespace StudentManagement.GUI
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_edit = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.btnShow = new System.Windows.Forms.Button();
             this.groupBox_DSSV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridview_dssv)).BeginInit();
             this.SuspendLayout();
@@ -198,22 +197,11 @@ namespace StudentManagement.GUI
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // btnShow
-            // 
-            this.btnShow.Location = new System.Drawing.Point(197, 100);
-            this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(75, 23);
-            this.btnShow.TabIndex = 12;
-            this.btnShow.Text = "show";
-            this.btnShow.UseVisualStyleBackColor = true;
-            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnShow);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -224,6 +212,7 @@ namespace StudentManagement.GUI
             this.Controls.Add(this.label_lsh);
             this.Controls.Add(this.groupBox_DSSV);
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.groupBox_DSSV.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.datagridview_dssv)).EndInit();
@@ -249,6 +238,5 @@ namespace StudentManagement.GUI
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button btn_edit;
         private System.Windows.Forms.Button btn_add;
-        private System.Windows.Forms.Button btnShow;
     }
 }

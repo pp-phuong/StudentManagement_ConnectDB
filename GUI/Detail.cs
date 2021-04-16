@@ -43,6 +43,8 @@ namespace StudentManagement.GUI
             {
                 BLL_QLSV bll = new BLL_QLSV();
                 gb_ttsv.Text = "Thêm Sinh Viên mới ";
+                cbbLSH.SelectedIndex = 0;
+                radio_male.Checked = true;
                 txt_masv.Text = bll.setNextMSSV();
                 txt_masv.Enabled = false;
 
@@ -85,9 +87,9 @@ namespace StudentManagement.GUI
                         break;
                     case 2:
                         MessageBox.Show("Vui Lòng Nhập Mã SV không chứa kí tự!");
-
                         break;
                 }
+                return;
             }
             else
             {
@@ -113,8 +115,6 @@ namespace StudentManagement.GUI
                     }
                 }
             }
-          
-            this.Dispose();
         }
         private int validateForm()
         {
@@ -137,7 +137,7 @@ namespace StudentManagement.GUI
         public SV setSV()
         {
             SV s = new SV();
-            s.MSSV =txt_masv.Text;
+            s.MSSV = txt_masv.Text;
             s.NameSV = txt_tensv.Text;
 
             if (radio_male.Checked == true)

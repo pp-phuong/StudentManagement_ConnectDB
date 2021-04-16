@@ -54,7 +54,7 @@ namespace StudentManagement.DAL
                 gender = 0;
             }
             string query = "INSERT INTO SV VALUES('";
-            query += s.MSSV + "', ' " + s.NameSV + "'," + gender + ", '" + s.NS + "'," + s.ID_Lop + ")";
+            query += s.MSSV + "', N'" + s.NameSV + "'," + gender + ", '" + s.NS + "'," + s.ID_Lop + ")";
             DBHelper.Instance.ExcuteDB(query);
             return true;
         }
@@ -72,7 +72,7 @@ namespace StudentManagement.DAL
             }
            ;
             string query = "UPDATE SV SET NS = '";
-            query += s.NS + "', NameSV = '" + s.NameSV + "', Gender = '" + gender + "', ID_Lop = '" + s.ID_Lop + "' WHERE MSSV = " + s.MSSV;
+            query += s.NS + "', NameSV = N'" + s.NameSV + "', Gender = '" + gender + "', ID_Lop = '" + s.ID_Lop + "' WHERE MSSV = " + s.MSSV;
             DBHelper.Instance.ExcuteDB(query);
             return true;
         }
@@ -118,7 +118,15 @@ namespace StudentManagement.DAL
         {
             List<SV> ListSV = GetListSV_DAL(0);
             string LastMSSV = ListSV[ListSV.Count - 1].MSSV;
-            string nextMSSV = (Convert.ToInt32(LastMSSV) + 1).ToString();
+            string nextMSSV = "";
+            if (Convert.ToInt32(LastMSSV) + 1 < 10){
+                nextMSSV = "00";
+            }
+            else if (Convert.ToInt32(LastMSSV) + 1 < 100)
+            {
+                nextMSSV = "0";
+            }
+            nextMSSV += (Convert.ToInt32(LastMSSV) + 1).ToString();
             return nextMSSV;
         }
     }

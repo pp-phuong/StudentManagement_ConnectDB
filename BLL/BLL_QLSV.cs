@@ -69,10 +69,10 @@ namespace StudentManagement.BLL
                     result = list.FindAll(i => i.MSSV.ToString().Contains(search_key));
                     break;
                 case "NameSV":
-                    result = list.FindAll(i => i.NameSV.ToString().Contains(search_key));
+                    result = list.FindAll(i => i.NameSV.ToString().ToUpper().Contains(search_key.ToUpper()));
                     break;
                 case "Gender":
-                    result = list.FindAll(i => i.Gender.ToString().Contains(search_key));
+                    result = list.FindAll(i => i.Gender.ToString().ToUpper().Contains(search_key.ToUpper()));
                     break;
                 case "NS":
                     result = list.FindAll(i => i.NS.ToString().Contains(search_key));

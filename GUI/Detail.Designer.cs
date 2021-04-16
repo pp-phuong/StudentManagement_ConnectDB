@@ -193,6 +193,7 @@ namespace StudentManagement.GUI
             this.ClientSize = new System.Drawing.Size(442, 450);
             this.Controls.Add(this.gb_ttsv);
             this.Name = "Detail";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detail";
             this.gb_ttsv.ResumeLayout(false);
             this.gb_ttsv.PerformLayout();
